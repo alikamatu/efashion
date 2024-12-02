@@ -1,11 +1,18 @@
+"use client"
 import Link from "next/link";
+import MobileNav from "./MobileNav";
+import { useState } from "react";
+import Search from "./Search";
 
 export default function Navbar() {
 
+    const [ShowNav, setShowNav] = useState(false)
+
     return (
-        <div className="flex w-full">
+        <div className="flex-col">
+                    <div className="flex w-full">
             <div className="flex p-6 px-8 w-full justify-between items-center">
-                <img src="/icons/List.png" className="md:hidden" alt="" />
+                <img src="/icons/List.png" onClick={()=>setShowNav(true)} className="md:hidden" alt="" />
                 <div className="hidden md:flex gap-4">
                     <img src="/icons/Logo.png" alt="" />
                     <ul className="flex gap-4">
@@ -26,6 +33,9 @@ export default function Navbar() {
                     <img src="/icons/Bag.png" alt="" />
                     </div>
             </div>
+        </div>
+        {ShowNav?<MobileNav setShowNav={setShowNav} />:""}
+        <Search />
         </div>
     )
 }
