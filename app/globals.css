@@ -11,3 +11,8 @@
 body {
   font-family: var(--font-outfit);
 }
+
+
+.cursor-pointer:hover .hidden {
+  display: flex;
+}

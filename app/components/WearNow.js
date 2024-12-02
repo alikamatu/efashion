@@ -32,16 +32,17 @@ const Product = [
 export default function WearNow() {
 
     return (
-        <div className="flex flex-col p-10 gap-8">
-            <div className="flex">
+        <div className="flex flex-col flex-wrap p-4 md:p-10 gap-8 justify-center items-center w-full">
+           <div className="flex flex-col w-full md:w-[80%]">
+           <div className="flex">
                 <p className="text-xl">What to Wear Now</p>
             </div>
-            <div className="flex w-full items-center gap-4 justify-center">
+            <div className="flex flex-wrap w-full items-center gap-4 justify-center">
                 {Product.map((items, index) => (
-                    <div className="flex items-start justify-start" key={index}>
+                    <div className="flex items-start justify-start w-[150px] md:w-[300px]" key={index}>
                         <div className="flex flex-col">
-                            <div className="flex relative">
-                            <img src={items.image} className="relative" alt="" />
+                            <div className="flex relative w-[150px] md:w-[300px]">
+                            <img src={items.image} className="relative w-[150px] md:w-[300px]" alt="" />
                             <img src="/icons/plus.png" className="absolute bottom-4 right-3" alt="" />
                             </div>
                             <div className="flex flex-col">
@@ -52,6 +53,7 @@ export default function WearNow() {
                     </div>
                 ))}
             </div>
+           </div>
         </div>
     )
 }
