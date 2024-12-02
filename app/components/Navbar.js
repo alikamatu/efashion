@@ -7,7 +7,7 @@ export default function Navbar() {
             <div className="flex p-6 px-8 w-full justify-between items-center">
                 <img src="/icons/List.png" className="md:hidden" alt="" />
                 <div className="hidden md:flex gap-4">
-                    <img src="/icons/logo.png" alt="" />
+                    <img src="/icons/Logo.png" alt="" />
                     <ul className="flex gap-4">
                         <Link href='/'><li>Shop</li></Link>
                         <Link href='/'><li>New Arivals</li></Link>
@@ -16,7 +16,7 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <div className="flex">
-                <img className="md:hidden" src="/icons/logo.png" alt="" />
+                <img className="md:hidden" src="/icons/Logo.png" alt="" />
                 </div>
                 <div className="flex items-center gap-4">
                     <img src="/icons/MagnifyingGlass.png" alt="" />

@@ -43,7 +43,7 @@ export default function WearNow() {
                         <div className="flex flex-col">
                             <div className="flex relative w-[150px] md:w-[300px]">
                             <img src={items.image} className="relative w-[150px] md:w-[300px]" alt="" />
-                            <img src="/icons/plus.png" className="absolute bottom-4 right-3" alt="" />
+                            <img src="/icons/Plus.png" className="absolute bottom-4 right-3" alt="" />
                             </div>
                             <div className="flex flex-col">
                                 <p>{items.name}</p>
