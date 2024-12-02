@@ -4,7 +4,7 @@ export default function Banner() {
         <div className="flex flex-col relative">
             <img src='/assets/content.png' className="w-full h-[95vh] object-cover relative" alt="Banner.png" />
             <div className="flex flex-col absolute items-start bottom-20 left-5 md:left-20">
-                <p className="text-2xl md:text-4xl text-white">Elevate Your Style <br /> Timeless Fashion, Sustanable <br /> Choices</p>
+                <p className="text-2xl md:text-4xl text-white">Elevate Your Style <br /> Timeless Fashion, Sustanable <br /> Choices.</p>
                 <button className="my-4 bg-white py-3 px-6">Shop Now</button>
             </div>
         </div>
