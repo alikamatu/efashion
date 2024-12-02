@@ -28,7 +28,7 @@ export default function Instagram () {
             <p>Shop Instagram</p>
             <div className="flex gap-3">
             {IgPost.map((item, i) => (
-                <div className="flex relative cursor-pointer">
+                <div key={i} className="flex relative cursor-pointer">
                     <img src={item.image} alt="" />
                     <div className="hidden absolute items-center justify-center w-full h-full bg-[#00000056] animate-pulse">
                     <img src="/icons/InstagramLogo.png" className="flex items-center justify-center" alt="" />
