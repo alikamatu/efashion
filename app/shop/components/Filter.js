@@ -1,4 +1,11 @@
+"use client"
+import { useState } from "react";
+import Sort from "./Sort";
+import MobileSort from "./MobileSort";
+
 export default function Filter() {
+
+    const [showSort, setShowSort] = useState(false);
     
     return (
         <div className="md:flex justify-between items-center border-b-[1px] border-gray-300 w-full">
@@ -10,13 +17,15 @@ export default function Filter() {
                 <p className="border-[1px] rounded-full px-3 border-black">Stretch</p>
                 <p className="border-[1px] rounded-full px-3 border-black">Lounge</p>
             </div>
-            <div className="flex px-12 gap-24 justify-between md:justify-start">
-                <div className="flex items-center gap-2 pb-4">
+            <div className="flex px-12 gap-24 justify-between md:justify-start relative cursor-pointer">
+                <div className="flex items-center gap-2 pb-4" onClick={()=>setShowSort(true)}>
                 <p>Sort</p>
                 <img src="/icons/CaretDown.png" className="w-4" alt="" />
+                {showSort?<Sort />:""}
                 </div>
                 <p>Filter</p>
             </div>
+            {showSort?<MobileSort setShowSort={setShowSort} />:""}
         </div>
     )
 }
