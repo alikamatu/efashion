@@ -2,10 +2,12 @@
 import { useState } from "react";
 import Sort from "./Sort";
 import MobileSort from "./MobileSort";
+import Filters from "./Fiilters";
 
 export default function Filter() {
 
     const [showSort, setShowSort] = useState(false);
+    const [showFilter, setShowFilter] = useState(false);
     
     return (
         <div className="md:flex justify-between items-center border-b-[1px] border-gray-300 w-full">
@@ -23,9 +25,10 @@ export default function Filter() {
                 <img src="/icons/CaretDown.png" className="w-4" alt="" />
                 {showSort?<Sort />:""}
                 </div>
-                <p>Filter</p>
+                <p onClick={()=>setShowFilter(true)}>Filter</p>
             </div>
             {showSort?<MobileSort setShowSort={setShowSort} />:""}
+            {showFilter?<Filters setShowFilter={setShowFilter} />:""}
         </div>
     )
 }
