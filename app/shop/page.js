@@ -5,7 +5,7 @@ import Product from "./components/Product";
 export default function Shop() {
 
     return (
-        <div className="flex flex-col w-full justify-center items-center">
+        <div className="flex flex-col w-full">
             <div className="flex p-6 md:p-12 pb-2">
                 <h1 className="text-3xl">Shop</h1>
             </div>
