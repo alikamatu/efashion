@@ -17,7 +17,7 @@ export default function Navbar() {
                 <div className="hidden md:flex gap-4">
                     <img src="/icons/Logo.png" alt="" />
                     <ul className="flex gap-4">
-                        <Link href='/'><li>Shop</li></Link>
+                        <Link href='/shop'><li>Shop</li></Link>
                         <Link href='/'><li>New Arivals</li></Link>
                         <Link href='/'><li>Sales</li></Link>
                         <Link href='/'><li>Journal</li></Link>

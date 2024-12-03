@@ -2,7 +2,7 @@ export default function Footer() {
 
     return(
         <div className="md:flex bg-[#b9b9b93d] py-10 md:h-[40vh] justify-center gap-36 border-t-2 border-t-gray-300 items-start">
-            <div className="flex flex-col p-10 justify-between h-full">
+            <div className="flex flex-col p-10 gap-4 justify-between h-full">
             <div className="md:flex gap-12">
                 <div className="flex flex-col justify-start">
                     <h2 className="uppercase text-gray-600 pb-4">Contact Us</h2>
@@ -11,14 +11,14 @@ export default function Footer() {
                     <p>Mon-Fri 9am-3pm GT</p>
                 </div>
                 <div className="flex flex-col justify-between">
-                    <h2 className="uppercase text-gray-600 pb-4">Customers</h2>
+                    <h2 className="uppercase text-gray-600 pb-4 mt-6 md:mt-0">Customers</h2>
                     <p>Start a Return</p>
                     <p>Return Policy</p>
                     <p>FAQ</p>
                     <p>Catalogs and Mailers</p>
                     <p>About Group Gifting</p>
                 </div>
-                <div className="flex flex-col justify-between">
+                <div className="flex flex-col justify-between mt-6 md:mt-0">
                     <h2 className="uppercase text-gray-600 pb-4">Company</h2>
                     <p>About Us</p>
                     <p>Sustainability</p>
