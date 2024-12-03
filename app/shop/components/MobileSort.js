@@ -1,7 +1,7 @@
 export default function MobileSort({setShowSort}) {
 
     return (
-        <div className="flex md:hidden flex-col-reverse absolute top-0 w-screen h-screen bg-[#5e5e5ed7] z-10">
+        <div className="flex md:hidden flex-col-reverse fixed top-0 w-screen h-screen bg-[#5e5e5ed7] z-10">
             <div className="flex flex-col bg-white">
                 <div className="flex p-4 border-b-[1px] border-gray-300 w-full justify-between">
                     <p className="text-xl">Sort</p>
