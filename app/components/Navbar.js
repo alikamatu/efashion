@@ -6,7 +6,8 @@ import Search from "./Search";
 
 export default function Navbar() {
 
-    const [ShowNav, setShowNav] = useState(false)
+    const [ShowNav, setShowNav] = useState(false);
+    const [showSearch, setShowSearch] = useState(false);
 
     return (
         <div className="flex-col">
@@ -26,7 +27,7 @@ export default function Navbar() {
                 <img className="md:hidden" src="/icons/Logo.png" alt="" />
                 </div>
                 <div className="flex items-center gap-4">
-                    <img src="/icons/MagnifyingGlass.png" alt="" />
+                    <img src="/icons/MagnifyingGlass.png" onClick={()=>setShowSearch(true)} alt="" />
                     <Link href='/'><li className="list-none">Stores</li></Link>
                     <img src="/icons/Vector.png" alt="" />
                     <img src="/icons/Heart.png" alt="" />
@@ -35,7 +36,7 @@ export default function Navbar() {
             </div>
         </div>
         {ShowNav?<MobileNav setShowNav={setShowNav} />:""}
-        <Search />
+        {showSearch?<Search setShowSearch={setShowSearch} />:""}
         </div>
     )
 }
