@@ -23,11 +23,11 @@ const Items = [
     },
     {
         id: 3,
-        name: "Single-Origin Cashmere Beanie",
+        name: "Nike Air Jordan 1 High",
         image: '/assets/cujay.png',
-        desc: "By making these updates, your product details page will function correctly in the App Router without runtime errors.",
-        price: 98,
-        category: "Cap"
+        desc: "Elevate your sneaker game with the legendary Nike Air Jordan 1 High, a timeless icon that blends streetwear culture with athletic performance. Featuring the bold Chicago-inspired red, white, and black colorway, this sneaker stands as a tribute to Michael Jordan’s legacy on and off the court.",
+        price: 299,
+        category: "Sneaker"
     },
     {
         id: 4,
