@@ -1,5 +1,4 @@
 'use client';
-
 import { use, useState } from "react";
 import Footer from "@/app/components/Footer";
 import Match from "@/app/shop/components/Match";
@@ -45,7 +44,6 @@ const Items = [
         price: 299,
         category: "Sneaker"
     },
-    // Other products...
 ];
 
 export default function ProductDetails({ params }) {
@@ -56,6 +54,12 @@ export default function ProductDetails({ params }) {
     const [selectedSize, setSelectedSize] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const { addToCart } = useCart();
+    const [activeSections, setActiveSections] = useState({
+        availability: false,
+        fit: false,
+        care: false,
+        returns: false,
+    });
 
     if (!product) {
         return <p>Product not found.</p>;
@@ -95,13 +99,6 @@ export default function ProductDetails({ params }) {
     const handleSlideChange = (index) => {
         setCurrentIndex(index);
     };
-
-    const [activeSections, setActiveSections] = useState({
-        availability: false,
-        fit: false,
-        care: false,
-        returns: false,
-    });
 
     const toggleSection = (section) => {
         setActiveSections((prevState) => ({
