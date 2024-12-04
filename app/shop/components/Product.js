@@ -51,8 +51,9 @@ export default function Product() {
                     >
                         <div className="flex flex-col">
                             <div className="flex relative w-[100%] md:w-[300px]">
-                                <img src={item.image} className="relative w-[100%] md:w-[300px]" alt={item.name} />
+                                <img src={item.image} className="relative w-[100%] object-contain h-[210px] bg-blue-50 md:h-[350px] md:w-[300px]" alt={item.name} />
                                 <img src="/icons/Plus.png" className="absolute bottom-4 right-3" alt="View Details" />
+                                <img src="/icons/Heart.png" className="absolute top-4 right-3" alt="View Details" />
                             </div>
                             <div className="flex flex-col">
                                 <p className="text-xs md:text-sm">{item.name}</p>

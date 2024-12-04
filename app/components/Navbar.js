@@ -3,11 +3,13 @@ import Link from "next/link";
 import MobileNav from "./MobileNav";
 import { useState } from "react";
 import Search from "./Search";
+import DropDown from "./DropDown";
 
 export default function Navbar() {
 
     const [ShowNav, setShowNav] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
+    const [Drop, showDrop] = useState(false);
 
     return (
         <div className="flex-col">
@@ -17,7 +19,7 @@ export default function Navbar() {
                 <div className="hidden md:flex gap-4">
                     <img src="/icons/Logo.png" alt="" />
                     <ul className="flex gap-4">
-                        <Link href='/shop'><li>Shop</li></Link>
+                        <Link href='/shop' onMouseEnter={()=>showDrop(false)}><li>Shop</li></Link>
                         <Link href='/'><li>New Arivals</li></Link>
                         <Link href='/'><li>Sales</li></Link>
                         <Link href='/'><li>Journal</li></Link>
@@ -37,6 +39,7 @@ export default function Navbar() {
         </div>
         {ShowNav?<MobileNav setShowNav={setShowNav} />:""}
         {showSearch?<Search setShowSearch={setShowSearch} />:""}
+        {Drop?<DropDown/> : ""}
         </div>
     )
 }

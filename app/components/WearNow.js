@@ -37,17 +37,17 @@ export default function WearNow() {
            <div className="flex">
                 <p className="text-xl">What to Wear Now</p>
             </div>
-            <div className="flex flex-wrap w-full items-center gap-4 justify-center">
+            <div className="flex flex-wrap w-full items-center md:gap-4 justify-between md:justify-center">
                 {Product.map((items, index) => (
-                    <div className="flex items-start justify-start w-[150px] md:w-[300px]" key={index}>
+                    <div className="flex items-start justify-start w-[48%] md:w-[300px]" key={index}>
                         <div className="flex flex-col">
-                            <div className="flex relative w-[150px] md:w-[300px]">
-                            <img src={items.image} className="relative w-[150px] md:w-[300px]" alt="" />
+                            <div className="flex relative w-[100%] md:w-[300px]">
+                            <img src={items.image} className="relative w-[100%] md:w-[300px]" alt="" />
                             <img src="/icons/Plus.png" className="absolute bottom-4 right-3" alt="" />
                             </div>
                             <div className="flex flex-col">
-                                <p>{items.name}</p>
-                                <p className="font-semibold">${items.price}</p>
+                                <p className="text-xs md:text-sm">{items.name}</p>
+                                <p className="font-semibold text-sm">${items.price}</p>
                             </div>
                         </div>
                     </div>
