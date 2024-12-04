@@ -4,13 +4,13 @@ export default function Footer() {
         <div className="md:flex bg-[#b9b9b93d] py-10 md:h-[40vh] justify-center gap-36 border-t-2 border-t-gray-300 items-start">
             <div className="flex flex-col p-10 gap-4 justify-between h-full">
             <div className="md:flex gap-12">
-                <div className="flex flex-col justify-start">
+                <div className="flex flex-col gap-2 justify-start">
                     <h2 className="uppercase text-gray-600 pb-4">Contact Us</h2>
                     <p>+233 53 406 5652</p>
                     <p>alikamatu14@gmail.com</p>
                     <p>Mon-Fri 9am-3pm GT</p>
                 </div>
-                <div className="flex flex-col justify-between">
+                <div className="flex flex-col gap-2 justify-between">
                     <h2 className="uppercase text-gray-600 pb-4 mt-6 md:mt-0">Customers</h2>
                     <p>Start a Return</p>
                     <p>Return Policy</p>
@@ -18,7 +18,7 @@ export default function Footer() {
                     <p>Catalogs and Mailers</p>
                     <p>About Group Gifting</p>
                 </div>
-                <div className="flex flex-col justify-between mt-6 md:mt-0">
+                <div className="flex flex-col justify-between gap-2 mt-6 md:mt-0">
                     <h2 className="uppercase text-gray-600 pb-4">Company</h2>
                     <p>About Us</p>
                     <p>Sustainability</p>
@@ -28,7 +28,6 @@ export default function Footer() {
                     <p>Terms</p>
                 </div>
             </div>
-            CEIN
             </div>
             <div className="flex flex-col gap-4 p-10">
                 <p>Get the latest news from us</p>

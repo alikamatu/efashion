@@ -37,7 +37,7 @@ export default function WearNow() {
            <div className="flex">
                 <p className="text-xl">What to Wear Now</p>
             </div>
-            <div className="flex flex-wrap w-full items-center md:gap-4 justify-between md:justify-center">
+            <div className="flex flex-wrap w-full items-center md:gap-4 justify-between md:justify-start">
                 {Product.map((items, index) => (
                     <div className="flex items-start justify-start w-[48%] md:w-[300px]" key={index}>
                         <div className="flex flex-col">

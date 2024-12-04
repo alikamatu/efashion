@@ -1,3 +1,6 @@
+import Footer from "@/app/components/Footer";
+import Match from "@/app/shop/components/Match";
+import Recent from "@/app/shop/components/Recent";
 import Review from "@/app/shop/components/Review";
 import Show from "@/app/shop/components/Show";
 
@@ -47,18 +50,18 @@ export default function ProductDetails({ params }) {
 
     return (
        <div className="flex flex-col w-full">
-        <div className="flex w-full justify-center p-8">
-            <div className="flex w-[80%] justify-between items-start border-b-2 border-gray-500 p-8">
-                <div className="flex w-[65%]">
+        <div className="flex w-full justify-center md:p-8">
+            <div className="md:flex w-full md:w-[80%] justify-between items-start border-b-2 border-gray-500 md:p-8">
+                <div className="flex w-full md:w-[65%]">
                     <div className="flex flex-col w-full gap-2">
-                        <img src={product.image} className="w-full h-[800px] object-contain bg-blue-50" alt="" />
-                        <img src={product.image} className="w-full h-[800px] object-contain bg-blue-50" alt="" />
-                        <img src={product.image} className="w-full h-[800px] object-contain bg-blue-50" alt="" />
-                        <img src={product.image} className="w-full h-[800px] object-contain bg-blue-50" alt="" />
+                        <img src={product.image} className="w-full h-[500px] md:h-[800px] object-contain bg-blue-50" alt="" />
+                        <img src={product.image} className="hidden md:block w-full h-[400px] md:h-[800px] object-contain bg-blue-50" alt="" />
+                        <img src={product.image} className="hidden md:block w-full h-[400px] md:h-[800px] object-contain bg-blue-50" alt="" />
+                        <img src={product.image} className="hidden md:block w-full h-[400px] md:h-[800px] object-contain bg-blue-50" alt="" />
                     </div>
                 </div>
-                <div className="flex flex-col gap-8 w-[30%] items-start justify-start">
-                    <div className="flex">Shop/{product.category}</div>
+                <div className="flex flex-col gap-8 w-full md:w-[30%] p-5 md:p-0 items-start justify-start">
+                    <div className="flex text-gray-500">Shop/{product.category}</div>
                     <div className="flex flex-col gap-2">
                     <h2 className="text-2xl">{product.name}</h2>
                     <p className="font-semibold">${product.price}</p>
@@ -122,7 +125,7 @@ export default function ProductDetails({ params }) {
             </div>
         </div>
         <div className="flex w-full justify-center items-center">
-        <div className="flex w-[80%] gap-32 p-8 items-center justify-between">
+        <div className="md:flex w-full md:w-[80%]  gap-32 p-8 items-center justify-between">
             <div className="flex flex-col gap-4">
                 <h2 className="uppercase text-black font-thin">Design</h2>
                 <h3 className="text-xl">Airy & Worm</h3>
@@ -130,13 +133,13 @@ export default function ProductDetails({ params }) {
                 Blanditiis in natus, nam veniam amet, voluptate rem laudantium quod voluptatum accusamus harum repellendus praesentium odit, ullam porro! Enim, nihil. Quas quis aliquam eos eveniet a facere voluptatum commodi excepturi.</p>
             </div>
             <div className="flex flex-col gap-4">
-                <h2 className="uppercase text-black font-thin">Quality</h2>
+                <h2 className="uppercase text-black font-thin mt-6 md:mt-0">Quality</h2>
                 <h3 className="text-xl">Made In Italy</h3>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, nobis? Dolores tempore reiciendis dolore unde incidunt ipsam repellat vitae nulla necessitatibus quod! Non unde cumque facere corporis nisi consectetur dicta.
                 Blanditiis in natus, nam veniam amet, voluptate rem laudantium quod voluptatum accusamus harum repellendus praesentium odit, ullam porro! Enim, nihil. Quas quis aliquam eos eveniet a facere voluptatum commodi excepturi.</p>
             </div>
             <div className="flex flex-col gap-4">
-                <h2 className="uppercase text-black font-thin">Sustainbility</h2>
+                <h2 className="uppercase text-black font-thin mt-6 md:mt-0">Sustainbility</h2>
                 <h3 className="text-xl">Sustainable Baby Alpaca</h3>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, nobis? Dolores tempore reiciendis dolore unde incidunt ipsam repellat vitae nulla necessitatibus quod! Non unde cumque facere corporis nisi consectetur dicta.
                 Blanditiis in natus, nam veniam amet, voluptate rem laudantium quod voluptatum accusamus harum repellendus praesentium odit, ullam porro! Enim, nihil. Quas quis aliquam eos eveniet a facere voluptatum commodi excepturi.</p>
@@ -144,6 +147,10 @@ export default function ProductDetails({ params }) {
         </div>
         </div>
         <Review />
+        <Show />
+        <Match />
+        <Recent />
+        <Footer />
        </div>
     );
 }
