@@ -55,9 +55,9 @@ export default function ProductDetails({ params }) {
                 <div className="flex w-full md:w-[65%]">
                     <div className="flex flex-col w-full gap-2">
                         <img src={product.image} className="w-full h-[500px] md:h-[800px] object-contain bg-blue-50" alt="" />
-                        <img src={product.image} className="hidden md:block w-full h-[400px] md:h-[800px] object-contain bg-blue-50" alt="" />
-                        <img src={product.image} className="hidden md:block w-full h-[400px] md:h-[800px] object-contain bg-blue-50" alt="" />
-                        <img src={product.image} className="hidden md:block w-full h-[400px] md:h-[800px] object-contain bg-blue-50" alt="" />
+                        <img src={product.image} className="w-full h-[400px] md:h-[800px] object-contain bg-blue-50" alt="" />
+                        <img src={product.image} className="w-full h-[400px] md:h-[800px] object-contain bg-blue-50" alt="" />
+                        <img src={product.image} className="w-full h-[400px] md:h-[800px] object-contain bg-blue-50" alt="" />
                     </div>
                 </div>
                 <div className="flex flex-col gap-8 w-full md:w-[30%] p-5 md:p-0 items-start justify-start">

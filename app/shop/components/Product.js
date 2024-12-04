@@ -1,52 +1,54 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useWishlist } from "@/app/context/WishlistContext";
+import { useRouter } from "next/navigation";
 
 const Items = [
     {
         id: 1,
         name: "Classic Easy Zipper Tote",
-        image: '/assets/image.png',
+        image: "/assets/image.png",
         price: 299,
         category: "bags",
         color: "black",
         material: "Cotton",
-        size: "Medium"
+        size: "Medium",
     },
     {
         id: 2,
         name: "Wool Cashmier Sweater Coat",
-        image: '/assets/coat.png',
+        image: "/assets/coat.png",
         price: 398,
         category: "Clothing",
         color: "red",
         material: "Wool",
-        size: "Large"
+        size: "Large",
     },
     {
         id: 3,
         name: "Single-Origin Cashmere Beanie",
-        image: '/assets/cujay.png',
+        image: "/assets/cujay.png",
         price: 98,
         category: "Cap",
         color: "yellow",
         material: "Cashmere",
-        size: "Small"
+        size: "Small",
     },
     {
         id: 4,
         name: "Alpaca Wool Cropped Cardigan",
-        image: '/assets/product.png',
+        image: "/assets/product.png",
         price: 498,
         category: "Clothing",
         color: "green",
         material: "Alpaca",
-        size: "Extra Large"
+        size: "Extra Large",
     }
 ];
 
 export default function Product({ filters, sortOption }) {
     const router = useRouter();
+    const { addToWishlist } = useWishlist();
 
     const handleProductClick = (id) => {
         router.push(`/product/${id}`);
@@ -70,7 +72,7 @@ export default function Product({ filters, sortOption }) {
             case "price-high-low":
                 return b.price - a.price;
             default:
-                return 0; // No sorting for "featured" or "best-sellers"
+                return 0;
         }
     });
 
@@ -91,8 +93,20 @@ export default function Product({ filters, sortOption }) {
                                         className="relative w-[100%] object-contain h-[210px] bg-blue-50 md:h-[350px] md:w-[300px]"
                                         alt={item.name}
                                     />
-                                    <img src="/icons/Plus.png" className="absolute bottom-4 right-3" alt="View Details" />
-                                    <img src="/icons/Heart.png" className="absolute top-4 right-3" alt="Favorite" />
+                                    <img
+                                        src="/icons/Plus.png"
+                                        className="absolute bottom-4 right-3"
+                                        alt="View Details"
+                                    />
+                                    <img
+                                        src="/icons/Heart.png"
+                                        className="absolute top-4 right-3 cursor-pointer"
+                                        alt="Add to Wishlist"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            addToWishlist(item);
+                                        }}
+                                    />
                                 </div>
                                 <div className="flex flex-col">
                                     <p className="text-xs md:text-sm">{item.name}</p>
