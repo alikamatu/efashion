@@ -1,7 +1,7 @@
 export default function Footer() {
 
     return(
-        <div className="md:flex bg-[#b9b9b93d] py-10 md:h-[40vh] justify-center gap-36 border-t-2 border-t-gray-300 items-start">
+        <div className="md:flex bg-[#b9b9b93d] w-full py-10 md:h-[40vh] justify-center gap-36 border-t-2 border-t-gray-300 items-start">
             <div className="flex flex-col p-10 gap-4 justify-between h-full">
             <div className="md:flex gap-12">
                 <div className="flex flex-col gap-2 justify-start">

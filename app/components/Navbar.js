@@ -35,7 +35,7 @@ export default function Navbar() {
                     <Link href='/'><li className="list-none">Stores</li></Link>
                     <img src="/icons/Vector.png" alt="" />
                     <img src="/icons/Heart.png" alt="" onClick={()=>setWish(true)} />
-                    <img src="/icons/Bag.png" alt="" />
+                   <Link href='/cart'> <img src="/icons/Bag.png" alt="" /></Link>
                     </div>
             </div>
         </div>

@@ -1,66 +1,180 @@
+'use client';
+
+import { use, useState } from "react";
 import Footer from "@/app/components/Footer";
 import Match from "@/app/shop/components/Match";
 import Recent from "@/app/shop/components/Recent";
 import Review from "@/app/shop/components/Review";
 import Show from "@/app/shop/components/Show";
+import { useCart } from "@/app/context/CartContext";
 
 const Items = [
     {
         id: 1,
         name: "Classic Easy Zipper Tote",
-        image: '/assets/image.png',
-        desc: "By making these updates, your product details page will function correctly in the App Router without runtime errors.",
+        images: [
+            "/assets/image1.png",
+            "/assets/image2.png",
+            "/assets/image3.png",
+        ],
+        desc: "A versatile tote bag for your everyday needs.",
         price: 299,
-        category: "bags"
+        category: "bags",
     },
     {
         id: 2,
         name: "Wool Cashmier Sweater Coat",
-        image: '/assets/coat.png',
+        images: [
+            "/assets/coat.png",
+            "/assets/coat.png",
+            "/assets/coat.png",
+        ],
         price: 398,
-        desc: "By making these updates, your product details page will function correctly in the App Router without runtime errors.",
-        category: "Clothing"
+        desc: "A warm and stylish wool coat for chilly weather.",
+        category: "Clothing",
     },
     {
         id: 3,
         name: "Nike Air Jordan 1 High",
-        image: '/assets/cujay.png',
+        images: [
+            '/assets/cujay.png',
+            '/assets/cujay.png',
+            '/assets/cujay.png',
+        ],
         desc: "Elevate your sneaker game with the legendary Nike Air Jordan 1 High, a timeless icon that blends streetwear culture with athletic performance. Featuring the bold Chicago-inspired red, white, and black colorway, this sneaker stands as a tribute to Michael Jordan’s legacy on and off the court.",
         price: 299,
         category: "Sneaker"
     },
-    {
-        id: 4,
-        name: "Alpaca Wool Cropped Cardigan",
-        desc: "By making these updates, your product details page will function correctly in the App Router without runtime errors.",
-        image: '/assets/product.png',
-        price: 498,
-        category: "Clothing"
-    }
+    // Other products...
 ];
 
 export default function ProductDetails({ params }) {
-    const { id } = params;
-
+    const { id } = use(params);
     const product = Items.find((item) => item.id === parseInt(id, 10));
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [selectedColor, setSelectedColor] = useState(null);
+    const [selectedSize, setSelectedSize] = useState(null);
+    const [quantity, setQuantity] = useState(1);
+    const { addToCart } = useCart();
 
     if (!product) {
         return <p>Product not found.</p>;
     }
 
+    const handleAddToCart = () => {
+        if (!selectedColor) {
+            alert("Please select a color.");
+            return;
+        }
+        if (!selectedSize) {
+            alert("Please select a size.");
+            return;
+        }
+
+    if (!product) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <p className="text-xl font-semibold">Product not found.</p>
+            </div>
+        );
+    }
+
+    addToCart({
+        id: product.id,
+        name: product.name,
+        image: product.images[0],
+        price: product.price,
+        color: selectedColor,
+        size: selectedSize,
+        category: product.category,
+        quantity,
+    });
+    alert("Item added to cart.");
+};
+
+    const handleSlideChange = (index) => {
+        setCurrentIndex(index);
+    };
+
+    const [activeSections, setActiveSections] = useState({
+        availability: false,
+        fit: false,
+        care: false,
+        returns: false,
+    });
+
+    const toggleSection = (section) => {
+        setActiveSections((prevState) => ({
+            ...prevState,
+            [section]: !prevState[section],
+        }));
+    };
+
+
     return (
-       <div className="flex flex-col w-full">
-        <div className="flex w-full justify-center md:p-8">
-            <div className="md:flex w-full md:w-[80%] justify-between items-start border-b-2 border-gray-500 md:p-8">
-                <div className="flex w-full md:w-[65%]">
-                    <div className="flex flex-col w-full gap-2">
-                        <img src={product.image} className="w-full h-[500px] md:h-[800px] object-contain bg-blue-50" alt="" />
-                        <img src={product.image} className="w-full h-[400px] md:h-[800px] object-contain bg-blue-50" alt="" />
-                        <img src={product.image} className="w-full h-[400px] md:h-[800px] object-contain bg-blue-50" alt="" />
-                        <img src={product.image} className="w-full h-[400px] md:h-[800px] object-contain bg-blue-50" alt="" />
+        <div className="flex flex-col w-full">
+            <div className="flex w-full justify-center items-center md:p-8">
+                <div className="md:flex w-full md:w-[80%] justify-between gap-24 items-start border-b-2 border-gray-500 md:p-8">
+                    <div className="hidden md:block relative w-[400px] md:w-[90%] overflow-hidden">
+                        <div
+                            className="flex transition-transform duration-500"
+                            style={{
+                                transform: `translateX(-${currentIndex * 950}px)`,
+                                width: `${product.images.length * 100}%`,
+                            }}
+                        >
+                            {product.images.map((image, index) => (
+                                <img
+                                    key={index}
+                                    src={image}
+                                    alt={`${product.name} - Slide ${index + 1}`}
+                                    className="w-[500px] md:w-[950px] h-[500px] md:h-[800px] object-contain"
+                                />
+                            ))}
+                        </div>
+                        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                            {product.images.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handleSlideChange(index)}
+                                    className={`w-3 h-3 rounded-full ${
+                                        currentIndex === index ? "bg-black" : "bg-gray-300"
+                                    }`}
+                                ></button>
+                            ))}
+                        </div>
                     </div>
-                </div>
-                <div className="flex flex-col gap-8 w-full md:w-[30%] p-5 md:p-0 items-start justify-start">
+                    <div className="md:hidden relative w-[100%] md:w-[900px] overflow-hidden">
+                        <div
+                            className="flex transition-transform duration-500"
+                            style={{
+                                transform: `translateX(-${currentIndex * 400}px)`,
+                                width: `${product.images.length * 100}%`,
+                            }}
+                        >
+                            {product.images.map((image, index) => (
+                                <img
+                                    key={index}
+                                    src={image}
+                                    alt={`${product.name} - Slide ${index + 1}`}
+                                    className="w-[400px] h-[500px] md:h-[800px] object-contain"
+                                />
+                            ))}
+                        </div>
+                        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                            {product.images.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handleSlideChange(index)}
+                                    className={`w-3 h-3 rounded-full ${
+                                        currentIndex === index ? "bg-black" : "bg-gray-300"
+                                    }`}
+                                ></button>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col gap-8 w-full md:w-[40%] p-5 md:p-0 items-start justify-start">
                     <div className="flex text-gray-500">Shop/{product.category}</div>
                     <div className="flex flex-col gap-2">
                     <h2 className="text-2xl">{product.name}</h2>
@@ -69,58 +183,172 @@ export default function ProductDetails({ params }) {
                     <div className="flex">
                         <p>{product.desc}</p>
                     </div>
-                    <div className="flex flex-col gap-3">
-                        <h2 className="font-semibold">Product Color</h2>
-                        <div className="flex gap-3">
-                            <div className="flex bg-red-600 w-6 h-6 rounded-full"></div>
-                            <div className="flex bg-green-600 w-6 h-6 rounded-full"></div>
-                            <div className="flex bg-yellow-600 w-6 h-6 rounded-full"></div>
-                            <div className="flex bg-purple-600 w-6 h-6 rounded-full"></div>
-                        </div>
+                    <div className="flex flex-col gap-3 mt-4">
+                    <h2 className="font-semibold">Product Color</h2>
+                    <div className="flex gap-3">
+                        {["red", "green", "yellow", "purple"].map((color) => (
+                            <div
+                                key={color}
+                                className={`flex w-6 h-6 rounded-full bg-${color}-600 cursor-pointer ${
+                                    selectedColor === color ? "ring-2 ring-black" : ""
+                                }`}
+                                onClick={() => setSelectedColor(color)}
+                            ></div>
+                        ))}
                     </div>
-                    <div className="flex flex-col gap-3">
-                        <h2 className="font-semibold">Product Size</h2>
-                        <div className="flex gap-2">
-                            <p className="border-2 border-gray-500 p-2 w-8 h-8 flex flex-col items-center justify-center">XS</p>
-                            <p className="border-2 border-gray-500 p-2 w-8 h-8 flex flex-col items-center justify-center">X</p>
-                            <p className="border-2 border-gray-500 p-2 w-8 h-8 flex flex-col items-center justify-center">M</p>
-                            <p className="border-2 border-gray-500 p-2 w-8 h-8 flex flex-col items-center justify-center">L</p>
-                            <p className="border-2 border-gray-500 p-2 w-8 h-8 flex flex-col items-center justify-center">XL</p>
-                        </div>
+                </div>
+
+                {/* Size Selection */}
+                <div className="flex flex-col gap-3 mt-4">
+                    <h2 className="font-semibold">Product Size</h2>
+                    <div className="flex gap-2">
+                        {["XS", "S", "M", "L", "XL"].map((size) => (
+                            <p
+                                key={size}
+                                className={`border-2 p-2 w-8 h-8 flex items-center justify-center cursor-pointer ${
+                                    selectedSize === size ? "border-black" : "border-gray-500"
+                                }`}
+                                onClick={() => setSelectedSize(size)}
+                            >
+                                {size}
+                            </p>
+                        ))}
                     </div>
-                    <div className="flex w-full">
-                        <button className="bg-black text-white w-full py-2">Add to Bag</button>
-                    </div>
-                    <div className="flex flex-col gap-3 w-full">
-                        <div className="flex flex-col w-full gap-3">
-                        <div className="flex justify-between w-full">
-                            <h2>Check In-Store Availability</h2>
-                            <img src="/icons/CaretDown.png" alt="" />
-                        </div>
-                        <p className="text-gray-500">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta repellendus iure quaerat quae ipsa pariatur veniam assumenda ex sint sequi earum dolore quas provident voluptas aliquid hic, aut in!</p>
-                        </div>
-                        <div className="flex flex-col w-full gap-3">
-                        <div className="flex justify-between w-full">
-                            <h2>Fit Details</h2>
-                            <img src="/icons/CaretDown.png" alt="" />
-                        </div>
-                        <p className="text-gray-500">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta repellendus iure quaerat quae ipsa pariatur veniam assumenda ex sint sequi earum dolore quas provident voluptas aliquid hic, aut in!</p>
-                        </div>
-                        <div className="flex flex-col w-full gap-3">
-                        <div className="flex justify-between w-full">
-                            <h2>Farication & Care</h2>
-                            <img src="/icons/CaretDown.png" alt="" />
-                        </div>
-                        <p className="text-gray-500">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta repellendus iure quaerat quae ipsa pariatur veniam assumenda ex sint sequi earum dolore quas provident voluptas aliquid hic, aut in!</p>
-                        </div>
-                        <div className="flex flex-col w-full gap-3">
-                        <div className="flex justify-between w-full">
-                            <h2>Shoping and Returns</h2>
-                            <img src="/icons/CaretDown.png" alt="" />
-                        </div>
-                        <p className="text-gray-500">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta repellendus iure quaerat quae ipsa pariatur veniam assumenda ex sint sequi earum dolore quas provident voluptas aliquid hic, aut in!</p>
-                        </div>
-                    </div>
+                </div>
+
+                {/* Quantity Selector */}
+                <div className="flex items-center gap-4 mt-4">
+                    <button
+                        className="border p-2"
+                        onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                    >
+                        -
+                    </button>
+                    <p>{quantity}</p>
+                    <button className="border p-2" onClick={() => setQuantity((q) => q + 1)}>
+                        +
+                    </button>
+                </div>
+
+                {/* Add to Cart Button */}
+                <div className="flex w-full mt-4">
+                    <button className="bg-black text-white w-full py-2" onClick={handleAddToCart}>
+                        Add to Bag
+                    </button>
+                </div>
+                <div className="flex flex-col gap-3 w-full">
+            {/* Check In-Store Availability */}
+            <div className="flex flex-col w-full">
+                <div
+                    className="flex justify-between w-full items-center cursor-pointer"
+                    onClick={() => toggleSection("availability")}
+                    aria-expanded={activeSections.availability}
+                    role="button"
+                >
+                    <h2>Check In-Store Availability</h2>
+                    <img
+                        src={activeSections.availability ? "/icons/CaretUp.png" : "/icons/CaretDown.png"}
+                        alt={activeSections.availability ? "Collapse" : "Expand"}
+                    />
+                </div>
+                <div
+                    className={`overflow-hidden transition-max-height duration-300 ${
+                        activeSections.availability ? "max-h-40" : "max-h-0"
+                    }`}
+                    aria-hidden={!activeSections.availability}
+                >
+                    <p className="text-gray-500 mt-2">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta repellendus iure
+                        quaerat quae ipsa pariatur veniam assumenda ex sint sequi earum dolore quas provident
+                        voluptas aliquid hic, aut in!
+                    </p>
+                </div>
+            </div>
+
+            {/* Fit Details */}
+            <div className="flex flex-col w-full">
+                <div
+                    className="flex justify-between w-full items-center cursor-pointer"
+                    onClick={() => toggleSection("fit")}
+                    aria-expanded={activeSections.fit}
+                    role="button"
+                >
+                    <h2>Fit Details</h2>
+                    <img
+                        src={activeSections.fit ? "/icons/CaretUp.png" : "/icons/CaretDown.png"}
+                        alt={activeSections.fit ? "Collapse" : "Expand"}
+                    />
+                </div>
+                <div
+                    className={`overflow-hidden transition-max-height duration-300 ${
+                        activeSections.fit ? "max-h-40" : "max-h-0"
+                    }`}
+                    aria-hidden={!activeSections.fit}
+                >
+                    <p className="text-gray-500 mt-2">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta repellendus iure
+                        quaerat quae ipsa pariatur veniam assumenda ex sint sequi earum dolore quas provident
+                        voluptas aliquid hic, aut in!
+                    </p>
+                </div>
+            </div>
+
+            {/* Fabrication & Care */}
+            <div className="flex flex-col w-full">
+                <div
+                    className="flex justify-between w-full items-center cursor-pointer"
+                    onClick={() => toggleSection("care")}
+                    aria-expanded={activeSections.care}
+                    role="button"
+                >
+                    <h2>Fabrication & Care</h2>
+                    <img
+                        src={activeSections.care ? "/icons/CaretUp.png" : "/icons/CaretDown.png"}
+                        alt={activeSections.care ? "Collapse" : "Expand"}
+                    />
+                </div>
+                <div
+                    className={`overflow-hidden transition-max-height duration-300 ${
+                        activeSections.care ? "max-h-40" : "max-h-0"
+                    }`}
+                    aria-hidden={!activeSections.care}
+                >
+                    <p className="text-gray-500 mt-2">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta repellendus iure
+                        quaerat quae ipsa pariatur veniam assumenda ex sint sequi earum dolore quas provident
+                        voluptas aliquid hic, aut in!
+                    </p>
+                </div>
+            </div>
+
+            {/* Shopping and Returns */}
+            <div className="flex flex-col w-full">
+                <div
+                    className="flex justify-between w-full items-center cursor-pointer"
+                    onClick={() => toggleSection("returns")}
+                    aria-expanded={activeSections.returns}
+                    role="button"
+                >
+                    <h2>Shopping and Returns</h2>
+                    <img
+                        src={activeSections.returns ? "/icons/CaretUp.png" : "/icons/CaretDown.png"}
+                        alt={activeSections.returns ? "Collapse" : "Expand"}
+                    />
+                </div>
+                <div
+                    className={`overflow-hidden transition-max-height duration-300 ${
+                        activeSections.returns ? "max-h-40" : "max-h-0"
+                    }`}
+                    aria-hidden={!activeSections.returns}
+                >
+                    <p className="text-gray-500 mt-2">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat dicta repellendus iure
+                        quaerat quae ipsa pariatur veniam assumenda ex sint sequi earum dolore quas provident
+                        voluptas aliquid hic, aut in!
+                    </p>
+                </div>
+            </div>
+        </div>
                 </div>
             </div>
         </div>

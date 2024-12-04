@@ -4,6 +4,7 @@ import { Outfit } from "next/font/google"; // Import Outfit from next/font/googl
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { WishlistProvider } from "./context/WishlistContext";
+import { CartProvider } from "./context/CartContext";
 
 // Load GeistSans local font
 const geistSans = localFont({
@@ -37,10 +38,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable} antialiased`}
       >
+        <CartProvider>
         <WishlistProvider>
               <Navbar />
               {children}
         </WishlistProvider>
+        </CartProvider>
       </body>
     </html>
   );
