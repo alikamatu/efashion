@@ -28,7 +28,7 @@ const Items = [
 export default function Recent() {
 
     return(
-        <div className="flex flex-col justify-center items-center w-full gap-16 p-8">
+        <div className="flex flex-col justify-center items-center w-full gap-16 pb-6 md:p-8">
             <div className="lfex">
                 <p className="text-3xl">Recently Viewed</p>
             </div>

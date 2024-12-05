@@ -467,6 +467,10 @@ export default function ProductDetails({ params }) {
             </div>
         </div>
         </div>
+        <div className="flex bg-red-600"></div>
+        <div className="flex bg-yellow-600"></div>
+        <div className="flex bg-green-600"></div>
+        <div className="flex bg-purple-600"></div>
         <Show />
         <Review />
         <Match />

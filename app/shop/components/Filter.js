@@ -44,7 +44,7 @@ export default function Filter({ onFiltersChange, setSortOption, onCategorySelec
             <div className="flex px-12 gap-24 justify-between md:justify-start relative cursor-pointer">
                 <div className="flex items-center gap-2 pb-4" ref={sortRef} onClick={() => setShowSort(true)}>
                     <p>Sort</p>
-                    <img src="/icons/CaretDown.png" className="w-4" alt="Sort" />
+                    <img src="/icons/CaretDown.png" className="w-4 cursor-pointer" alt="Sort" />
                     {showSort ? <Sort setSortOption={setSortOption} /> : null}
                 </div>
                 <p onClick={() => setShowFilter(true)}>Filter</p>
