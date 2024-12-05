@@ -1,15 +1,15 @@
-'use client';
-
-import { useWishlist } from "@/app/context/WishlistContext";
-import AllProducts from "@/app/data/products";
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+"use client"
+import { useEffect, useState } from "react";
 import { AiOutlineHeart, AiFillHeart, AiOutlinePlus } from "react-icons/ai";
+import AllProducts from "../data/products";
+import { useWishlist } from "../context/WishlistContext";
+import { useRouter } from "next/navigation";
 
-export default function Product({ filters, sortOption }) {
+export default function Service() {
     const router = useRouter();
     const { addToWishlist } = useWishlist();
     const [wishlist, setWishlist] = useState([]); // Track wishlist items
+    const [randomProducts, setRandomProducts] = useState([]); // Track random products
     const [popEffect, setPopEffect] = useState(null); // Track which heart to animate
 
     // Load wishlist from localStorage on component mount
@@ -18,6 +18,11 @@ export default function Product({ filters, sortOption }) {
         if (storedWishlist) {
             setWishlist(JSON.parse(storedWishlist));
         }
+    }, []);
+
+    useEffect(() => {
+        const shuffled = [...AllProducts].sort(() => 0.5 - Math.random());
+        setRandomProducts(shuffled.slice(0, 4));
     }, []);
 
     // Update localStorage whenever wishlist changes
@@ -40,39 +45,16 @@ export default function Product({ filters, sortOption }) {
         }
     };
 
-    const filteredItems = AllProducts.filter((item) => {
-        const matchesCategory = !filters.category || item.category === filters.category;
-        const matchesColor =
-            !filters.colors || filters.colors.length === 0 || filters.colors.includes(item.color);
-        const matchesMaterial =
-            !filters.material || item.material === filters.material;
-        const matchesSize = !filters.size || item.size === filters.size;
-
-        return matchesCategory && matchesColor && matchesMaterial && matchesSize;
-    });
-
-    const sortedItems = [...filteredItems].sort((a, b) => {
-        switch (sortOption) {
-            case "price-low-high":
-                return a.price - b.price;
-            case "price-high-low":
-                return b.price - a.price;
-            default:
-                return 0;
-        }
-    });
-
     return (
-        <div className="flex justify-center items-center min-h-screen p-2 md:p-12">
+        <div className="flex flex-col justify-center items-center  p-2 md:p-12">
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-6xl px-4">
-                {sortedItems.length > 0 ? (
-                    sortedItems.map((item, index) => (
+                {randomProducts.map((item, index) => (
                         <div
-                            className={`flex flex-col items-center justify-start w-full bg-white cursor-pointer shadow-lg rounded-lg transition-transform ${
-                                index === sortedItems.length - 1 ? "justify-self-center" : ""
-                            }`}
+                            className={`flex flex-col items-center justify-start w-full bg-white cursor-pointer shadow-lg rounded-lg transition-transform
+                                ${index }`}
                             key={item.id}
                             onClick={() => handleProductClick(item.id)}
+
                         >
                             <div className="relative w-full overflow-hidden group">
                                 <img
@@ -112,11 +94,9 @@ export default function Product({ filters, sortOption }) {
                                 <p className="font-semibold text-sm">${item.price}</p>
                             </div>
                         </div>
-                    ))
-                ) : (
-                    <p className="text-center w-full text-gray-500">No items match your filters.</p>
+                    )
                 )}
             </div>
         </div>
-    );
+    )
 }

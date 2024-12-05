@@ -303,8 +303,6 @@ export default function ProductDetails({ params }) {
                         ))}
                     </div>
                 </div>
-
-                {/* Size Selection */}
                 <div className="flex flex-col gap-3 mt-4">
                     <h2 className="font-semibold">Product Size</h2>
                     <div className="flex gap-2">
@@ -321,8 +319,6 @@ export default function ProductDetails({ params }) {
                         ))}
                     </div>
                 </div>
-
-                {/* Quantity Selector */}
                 <div className="flex items-center gap-4 mt-4">
                     <button
                         className="border p-2"
@@ -335,15 +331,12 @@ export default function ProductDetails({ params }) {
                         +
                     </button>
                 </div>
-
-                {/* Add to Cart Button */}
                 <div className="flex w-full mt-4">
                     <button className="bg-black text-white w-full py-2" onClick={handleAddToCart}>
                         Add to Bag
                     </button>
                 </div>
                 <div className="flex flex-col gap-3 w-full">
-            {/* Check In-Store Availability */}
             <div className="flex flex-col w-full">
                 <div
                     className="flex justify-between w-full items-center cursor-pointer"
@@ -370,8 +363,6 @@ export default function ProductDetails({ params }) {
                     </p>
                 </div>
             </div>
-
-            {/* Fit Details */}
             <div className="flex flex-col w-full">
                 <div
                     className="flex justify-between w-full items-center cursor-pointer"
@@ -398,8 +389,6 @@ export default function ProductDetails({ params }) {
                     </p>
                 </div>
             </div>
-
-            {/* Fabrication & Care */}
             <div className="flex flex-col w-full">
                 <div
                     className="flex justify-between w-full items-center cursor-pointer"
@@ -426,8 +415,6 @@ export default function ProductDetails({ params }) {
                     </p>
                 </div>
             </div>
-
-            {/* Shopping and Returns */}
             <div className="flex flex-col w-full">
                 <div
                     className="flex justify-between w-full items-center cursor-pointer"
@@ -480,8 +467,8 @@ export default function ProductDetails({ params }) {
             </div>
         </div>
         </div>
-        <Review />
         <Show />
+        <Review />
         <Match />
         <Recent />
         <Footer />
