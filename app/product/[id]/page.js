@@ -17,7 +17,7 @@ const Items = [
         color: "black",
         material: "Cotton",
         size: "Medium",
-        des: "A classic pair of sneakers with a comfortable fit and sleek design."
+        desc: "A classic pair of sneakers with a comfortable fit and sleek design."
     },
     {
         id: 2,
@@ -28,7 +28,7 @@ const Items = [
         color: "Black",
         material: "Wool",
         size: "Large",
-        des: "Stylish glasses offering a sophisticated look, perfect for all occasions."
+        desc: "Stylish glasses offering a sophisticated look, perfect for all occasions."
     },
     {
         id: 3,
@@ -39,7 +39,7 @@ const Items = [
         color: "red",
         material: "Cashmere",
         size: "Small",
-        des: "Luxurious cashmere beanie, soft and perfect for keeping warm in colder months."
+        desc: "Luxurious cashmere beanie, soft and perfect for keeping warm in colder months."
     },
     {
         id: 4,
@@ -50,7 +50,7 @@ const Items = [
         color: "green",
         material: "Alpaca",
         size: "Extra Large",
-        des: "Iconic basketball sneakers that combine comfort with style."
+        desc: "Iconic basketball sneakers that combine comfort with style."
     },
     {
         id: 5,
@@ -61,7 +61,7 @@ const Items = [
         color: "black",
         material: "Leather",
         size: "Medium",
-        des: "Trendy trousers with Adidas' signature stripes, made for durability."
+        desc: "Trendy trousers with Adidas' signature stripes, made for durability."
     },
     {
         id: 6,
@@ -72,7 +72,7 @@ const Items = [
         color: "blue",
         material: "Leather",
         size: "Large",
-        des: "High-quality leather sneakers with superior comfort and a bold design."
+        desc: "High-quality leather sneakers with superior comfort and a bold design."
     },
     {
         id: 7,
@@ -83,7 +83,7 @@ const Items = [
         color: "beige",
         material: "Straw",
         size: "Medium",
-        des: "Casual black cap made from breathable straw material, perfect for sunny days."
+        desc: "Casual black cap made from breathable straw material, perfect for sunny days."
     },
     {
         id: 8,
@@ -94,7 +94,7 @@ const Items = [
         color: "white",
         material: "Denim",
         size: "Large",
-        des: "A trendy white cut top made of denim, perfect for casual outings."
+        desc: "A trendy white cut top made of denim, perfect for casual outings."
     },
     {
         id: 9,
@@ -105,7 +105,7 @@ const Items = [
         color: "brow",
         material: "Leather",
         size: "10",
-        des: "Stylish camo cap crafted from durable leather material."
+        desc: "Stylish camo cap crafted from durable leather material."
     },
     {
         id: 10,
@@ -116,7 +116,7 @@ const Items = [
         color: "black",
         material: "Cotton",
         size: "Medium",
-        des: "Luxurious black hoodie made from soft cotton, perfect for colder weather."
+        desc: "Luxurious black hoodie made from soft cotton, perfect for colder weather."
     },
     {
         id: 11,
@@ -127,7 +127,7 @@ const Items = [
         color: "gray",
         material: "Fleece",
         size: "Small",
-        des: "Comfortable gray fleece trousers for a relaxed yet stylish look."
+        desc: "Comfortable gray fleece trousers for a relaxed yet stylish look."
     },
     {
         id: 12,
@@ -138,7 +138,7 @@ const Items = [
         color: "white",
         material: "Silk",
         size: "One Size",
-        des: "Elegant white silk shirt, offering both comfort and sophistication."
+        desc: "Elegant white silk shirt, offering both comfort and sophistication."
     },
     {
         id: 13,
@@ -149,7 +149,7 @@ const Items = [
         color: "Black",
         material: "Silk",
         size: "One Size",
-        des: "A luxurious black watch that combines precision and elegance."
+        desc: "A luxurious black watch that combines precision and elegance."
     }
 ];
 
@@ -219,25 +219,26 @@ export default function ProductDetails({ params }) {
         <div className="flex flex-col w-full">
             <div className="flex w-full justify-center items-center md:p-8">
                 <div className="md:flex w-full md:w-[80%] justify-between gap-24 items-start border-b-2 border-gray-500 md:p-8">
-                    <div className="hidden md:block relative w-[400px] md:w-[90%] overflow-hidden">
+                    <div className="hidden md:block relative h-[800px] w-[900px] overflow-x-scroll overflow-y-hidden">
                         <div
-                            className="flex transition-transform duration-500"
+                            className="flex items-start h-[800px] justify-start transition-transform duration-500"
                             style={{
-                                transform: `translateX(-${currentIndex * 950}px)`,
-                                width: `${product.images.length * 100}%`,
+                                transform: `translateX(-${currentIndex * 800}px)`,
+                                width: `${product.images.length * 800}px`,
                             }}
                         >
+                            <div className="absolute animate-bounce bottom-0 flex p-8">Swipe to left <img src="/icons/CaretUp.png" className="transform rotate-90" alt="" /></div>
                             {product.images.map((image, index) => (
                                 <img
                                     key={index}
                                     src={image}
                                     alt={`${product.name} - Slide ${index + 1}`}
-                                    className="w-[500px] md:w-[950px] h-[500px] md:h-[800px] object-contain"
+                                    className="w-[500px] md:w-[800px] h-[500px] md:h-[800px] object-contain"
                                 />
                             ))}
                         </div>
                         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-                            {product.images.map((_, index) => (
+                            {/* {product.images.map((_, index) => (
                                 <button
                                     key={index}
                                     onClick={() => handleSlideChange(index)}
@@ -245,10 +246,10 @@ export default function ProductDetails({ params }) {
                                         currentIndex === index ? "bg-black" : "bg-gray-300"
                                     }`}
                                 ></button>
-                            ))}
+                            ))} */}
                         </div>
                     </div>
-                    <div className="md:hidden relative w-[100%] md:w-[900px] overflow-hidden">
+                    <div className="md:hidden relative w-[100%] md:w-[900px] overflow-x-scroll overflow-y-hidden">
                         <div
                             className="flex transition-transform duration-500"
                             style={{
@@ -256,6 +257,7 @@ export default function ProductDetails({ params }) {
                                 width: `${product.images.length * 100}%`,
                             }}
                         >
+                            <div className="absolute animate-bounce bottom-0 flex p-8">Swipe to left <img src="/icons/CaretUp.png" className="transform rotate-90" alt="" /></div>
                             {product.images.map((image, index) => (
                                 <img
                                     key={index}
@@ -266,7 +268,7 @@ export default function ProductDetails({ params }) {
                             ))}
                         </div>
                         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-                            {product.images.map((_, index) => (
+                            {/* {product.images.map((_, index) => (
                                 <button
                                     key={index}
                                     onClick={() => handleSlideChange(index)}
@@ -274,7 +276,7 @@ export default function ProductDetails({ params }) {
                                         currentIndex === index ? "bg-black" : "bg-gray-300"
                                     }`}
                                 ></button>
-                            ))}
+                            ))} */}
                         </div>
                     </div>
 
