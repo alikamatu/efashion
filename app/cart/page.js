@@ -19,9 +19,9 @@ export default function Cart() {
             ) : (
                 <div className="flex md:mt-6 w-full">
                     <div className="flex flex-col w-full justify-center items-center">
-                        <div className="flex-col md:flex w-full md:w-[80%] p-8 justify-between items-start">
-                            <div className="flex-col md:flex w-full md:w-[70%] justify-center items-center">
-                                <div className="flex-col md:flex flex-wrap justify-center items-center gap-2 w-full">
+                        <div className="md:flex w-full md:w-[80%] p-8 justify-between items-start">
+                            <div className=" md:flex w-full md:w-[70%] justify-center items-center">
+                                <div className="md:flex flex-wrap justify-center items-center gap-2 w-full">
                                     {cart.map((item) => (
                                         <div key={`${item.id}-${item.size}`} className="flex flex-col p-4 border w-full mt-2 md:mt-0 md:w-[45%] gap-3">
                                             <div className="flex w-full justify-between items-center">

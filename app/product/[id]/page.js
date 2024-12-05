@@ -10,40 +10,147 @@ import { useCart } from "@/app/context/CartContext";
 const Items = [
     {
         id: 1,
-        name: "Classic Easy Zipper Tote",
-        images: [
-            "/assets/image1.png",
-            "/assets/image2.png",
-            "/assets/image3.png",
-        ],
-        desc: "A versatile tote bag for your everyday needs.",
+        name: "Vanz Red Lable",
+        images: ["/assets/vans.png", "/assets/vans.png", "/assets/vans.png"], // Array of images
         price: 299,
-        category: "bags",
+        category: "Sneaker",
+        color: "black",
+        material: "Cotton",
+        size: "Medium",
+        des: "A classic pair of sneakers with a comfortable fit and sleek design."
     },
     {
         id: 2,
-        name: "Wool Cashmier Sweater Coat",
-        images: [
-            "/assets/coat.png",
-            "/assets/coat.png",
-            "/assets/coat.png",
-        ],
+        name: "Stark Glasses",
+        images: ["/assets/igt.png", "/assets/igt.png", "/assets/igt.png"],
         price: 398,
-        desc: "A warm and stylish wool coat for chilly weather.",
-        category: "Clothing",
+        category: "Accessory",
+        color: "Black",
+        material: "Wool",
+        size: "Large",
+        des: "Stylish glasses offering a sophisticated look, perfect for all occasions."
     },
     {
         id: 3,
-        name: "Nike Air Jordan 1 High",
-        images: [
-            '/assets/cujay.png',
-            '/assets/cujay.png',
-            '/assets/cujay.png',
-        ],
-        desc: "Elevate your sneaker game with the legendary Nike Air Jordan 1 High, a timeless icon that blends streetwear culture with athletic performance. Featuring the bold Chicago-inspired red, white, and black colorway, this sneaker stands as a tribute to Michael Jordan’s legacy on and off the court.",
-        price: 299,
-        category: "Sneaker"
+        name: "Single-Origin Cashmere Beanie",
+        images: ["/assets/sweater.png", "/assets/sweater.png", "/assets/sweater.png"],
+        price: 98,
+        category: "Clothing",
+        color: "red",
+        material: "Cashmere",
+        size: "Small",
+        des: "Luxurious cashmere beanie, soft and perfect for keeping warm in colder months."
     },
+    {
+        id: 4,
+        name: "Nike Air Jordan 1 High",
+        images: ["/assets/cujay.png", "/assets/cujay.png", "/assets/cujay.png"],
+        price: 498,
+        category: "Clothing",
+        color: "green",
+        material: "Alpaca",
+        size: "Extra Large",
+        des: "Iconic basketball sneakers that combine comfort with style."
+    },
+    {
+        id: 5,
+        name: "Adidas Three Strips",
+        images: ["/assets/adid.png", "/assets/adid.png", "/assets/adid.png"],
+        price: 250,
+        category: "Trouser",
+        color: "black",
+        material: "Leather",
+        size: "Medium",
+        des: "Trendy trousers with Adidas' signature stripes, made for durability."
+    },
+    {
+        id: 6,
+        name: "Nike Air Jordan 2 High",
+        images: ["/assets/air.png", "/assets/air.png", "/assets/air.png"],
+        price: 399,
+        category: "Sneaker",
+        color: "blue",
+        material: "Leather",
+        size: "Large",
+        des: "High-quality leather sneakers with superior comfort and a bold design."
+    },
+    {
+        id: 7,
+        name: "Black Cap",
+        images: ["/assets/cap.png", "/assets/cap.png", "/assets/cap.png"],
+        price: 120,
+        category: "Cap",
+        color: "beige",
+        material: "Straw",
+        size: "Medium",
+        des: "Casual black cap made from breathable straw material, perfect for sunny days."
+    },
+    {
+        id: 8,
+        name: "White Cut Top",
+        images: ["/assets/cuttop.png", "/assets/cuttop.png", "/assets/cuttop.png"],
+        price: 150,
+        category: "Clothing",
+        color: "white",
+        material: "Denim",
+        size: "Large",
+        des: "A trendy white cut top made of denim, perfect for casual outings."
+    },
+    {
+        id: 9,
+        name: "Camo Cap",
+        images: ["/assets/cap.png", "/assets/cap.png", "/assets/cap.png"],
+        price: 450,
+        category: "Cap",
+        color: "brow",
+        material: "Leather",
+        size: "10",
+        des: "Stylish camo cap crafted from durable leather material."
+    },
+    {
+        id: 10,
+        name: "Black Luxury Hoddie",
+        images: ["/assets/hoddie.png", "/assets/hoddie.png", "/assets/hoddie.png"],
+        price: 79,
+        category: "Clothing",
+        color: "black",
+        material: "Cotton",
+        size: "Medium",
+        des: "Luxurious black hoodie made from soft cotton, perfect for colder weather."
+    },
+    {
+        id: 11,
+        name: "Gray Trausers",
+        images: ["/assets/tra.png", "/assets/tra.png", "/assets/tra.png"],
+        price: 245,
+        category: "Trousers",
+        color: "gray",
+        material: "Fleece",
+        size: "Small",
+        des: "Comfortable gray fleece trousers for a relaxed yet stylish look."
+    },
+    {
+        id: 12,
+        name: "Shirt",
+        images: ["/assets/shirt.png", "/assets/shirt.png", "/assets/shirt.png"],
+        price: 99,
+        category: "Clothing",
+        color: "white",
+        material: "Silk",
+        size: "One Size",
+        des: "Elegant white silk shirt, offering both comfort and sophistication."
+    },
+    {
+        id: 13,
+        name: "Czer Rolex Watch",
+        images: ["/assets/watch.png", "/assets/watch.png", "/assets/watch.png"],
+        price: 99,
+        category: "Accessory",
+        color: "Black",
+        material: "Silk",
+        size: "One Size",
+        des: "A luxurious black watch that combines precision and elegance."
+    }
 ];
 
 export default function ProductDetails({ params }) {
