@@ -55,3 +55,19 @@ body {
   animation: pop 0.3s ease-in-out;
 }
 
+@keyframes Slide {
+  0%{
+    transform: translateX(70%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
+}
+
+.animate-slide {
+  animation: Slide 0.4s ease-in-out;
+}
+
+.animate-slide::-webkit-scrollbar {
+  display: none;
+}

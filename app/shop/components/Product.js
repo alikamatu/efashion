@@ -10,9 +10,8 @@ export default function Product({ filters, sortOption }) {
     const router = useRouter();
     const { addToWishlist } = useWishlist();
     const [wishlist, setWishlist] = useState([]); // Track wishlist items
-    const [popEffect, setPopEffect] = useState(null); // Track which heart to animate
+    const [popEffect, setPopEffect] = useState(null);
 
-    // Load wishlist from localStorage on component mount
     useEffect(() => {
         const storedWishlist = localStorage.getItem("wishlist");
         if (storedWishlist) {
@@ -20,7 +19,6 @@ export default function Product({ filters, sortOption }) {
         }
     }, []);
 
-    // Update localStorage whenever wishlist changes
     useEffect(() => {
         localStorage.setItem("wishlist", JSON.stringify(wishlist));
     }, [wishlist]);
@@ -31,12 +29,12 @@ export default function Product({ filters, sortOption }) {
 
     const toggleWishlist = (item) => {
         if (wishlist.includes(item.id)) {
-            setWishlist(wishlist.filter((id) => id !== item.id)); // Remove if already in wishlist
+            setWishlist(wishlist.filter((id) => id !== item.id));
         } else {
-            setWishlist([...wishlist, item.id]); // Add if not in wishlist
-            addToWishlist(item); // Call wishlist context function
-            setPopEffect(item.id); // Trigger animation
-            setTimeout(() => setPopEffect(null), 300); // Reset animation after 300ms
+            setWishlist([...wishlist, item.id]);
+            addToWishlist(item);
+            setPopEffect(item.id);
+            setTimeout(() => setPopEffect(null), 300);
         }
     };
 
@@ -84,7 +82,6 @@ export default function Product({ filters, sortOption }) {
                                     className="absolute bottom-4 right-3 text-xl text-gray-600 transition-transform transform"
                                     title="View Details"
                                 />
-                                {/* Dynamic wishlist icon */}
                                 {wishlist.includes(item.id) ? (
                                     <AiFillHeart
                                         className={`absolute top-4 right-3 text-xl text-red-600 cursor-pointer transition-transform transform ${

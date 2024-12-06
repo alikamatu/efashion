@@ -6,7 +6,7 @@ import Search from "./Search";
 import DropDown from "./DropDown";
 import Wishlist from "../shop/components/Wishlist";
 import { AiOutlineMenu, AiOutlineSearch, AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai"; // Import React Icons
-import { BsBag } from "react-icons/bs"; // Icon for bag
+import { BsBag } from "react-icons/bs"; 
 import { FaStore } from "react-icons/fa"; // Icon for store
 
 export default function Navbar() {
@@ -64,7 +64,7 @@ export default function Navbar() {
                         </Link>
                         <AiOutlineHeart 
                             onClick={() => setWish(true)} 
-                            className="text-2xl cursor-pointer text-red-500" 
+                            className="text-2xl cursor-pointer" 
                             title="Wishlist" 
                         />
                         <Link href='/cart'>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 
 export default function Filters({ setShowFilter, onApplyFilters }) {
     const [selectedColors, setSelectedColors] = useState([]);
@@ -20,11 +21,11 @@ export default function Filters({ setShowFilter, onApplyFilters }) {
     };
 
     return (
-        <div className="flex fixed top-0 right-0 bg-[#5e5e5ed7] h-screen w-screen z-10 flex-row-reverse items-start">
-            <div className="flex flex-col bg-white h-screen items-start justify-between w-full md:w-[25%]">
-                <div className="flex p-6 justify-between items-center border-b-[1px] border-black w-full">
+        <div className="flex fixed top-0 right-0 bg-[#5e5e5ed7] h-screen w-screen z-10 flex-row-reverse items-start translate-x-0">
+            <div className="flex flex-col bg-white h-screen items-start justify-between w-full md:w-[25%] animate-slide overflow-y-scroll">
+                <div className="flex p-4 justify-between items-center border-b-[1px] border-black w-full">
                     <p>Filters</p>
-                    <img src="/icons/X.png" onClick={() => setShowFilter(false)} alt="Close" />
+                    <AiOutlineClose src="/icons/X.png" onClick={() => setShowFilter(false)} className="cursor-pointer duration-500 hover:text-red-600" alt="Close" />
                 </div>
                 <div className="flex flex-col p-8 gap-8">
                     <div className="flex flex-col">
@@ -76,7 +77,7 @@ export default function Filters({ setShowFilter, onApplyFilters }) {
                 </div>
                 <div className="flex w-full p-8 items-center justify-center">
                     <button
-                        className="bg-black text-white px-12 w-full py-4 text-2xl font-light"
+                        className="bg-black text-white w-full py-2 text-1xl font-light"
                         onClick={applyFilters}
                     >
                         See Results

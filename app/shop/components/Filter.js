@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import Sort from "./Sort";
 import MobileSort from "./MobileSort";
 import Filters from "./Fiilters";
+import { AiOutlineDown } from "react-icons/ai";
 
 export default function Filter({ onFiltersChange, setSortOption, onCategorySelect }) {
     const [showSort, setShowSort] = useState(false);
@@ -44,7 +45,7 @@ export default function Filter({ onFiltersChange, setSortOption, onCategorySelec
             <div className="flex px-12 gap-24 justify-between md:justify-start relative cursor-pointer">
                 <div className="flex items-center gap-2 pb-4" ref={sortRef} onClick={() => setShowSort(true)}>
                     <p>Sort</p>
-                    <img src="/icons/CaretDown.png" className="w-4 cursor-pointer" alt="Sort" />
+                    {showSort?<AiOutlineDown className="w-4 cursor-pointer rotate-180 duration-500" alt="Sort" />:<AiOutlineDown className="w-4 cursor-pointer duration-500" alt="Sort" />}
                     {showSort ? <Sort setSortOption={setSortOption} /> : null}
                 </div>
                 <p onClick={() => setShowFilter(true)}>Filter</p>

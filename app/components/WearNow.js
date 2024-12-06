@@ -37,12 +37,12 @@ export default function WearNow() {
 
     const toggleWishlist = (item) => {
         if (wishlist.includes(item.id)) {
-            setWishlist(wishlist.filter((id) => id !== item.id)); // Remove if already in wishlist
+            setWishlist(wishlist.filter((id) => id !== item.id)); 
         } else {
-            setWishlist([...wishlist, item.id]); // Add if not in wishlist
-            addToWishlist(item); // Call wishlist context function
-            setPopEffect(item.id); // Trigger animation
-            setTimeout(() => setPopEffect(null), 300); // Reset animation after 300ms
+            setWishlist([...wishlist, item.id]); 
+            addToWishlist(item); 
+            setPopEffect(item.id);
+            setTimeout(() => setPopEffect(null), 300);
         }
     };
 
