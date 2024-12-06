@@ -1,6 +1,6 @@
 // app/layout.js or app/layout.tsx
 import localFont from "next/font/local";
-import { Outfit } from "next/font/google"; // Import Outfit from next/font/google
+import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import { WishlistProvider } from "./context/WishlistContext";

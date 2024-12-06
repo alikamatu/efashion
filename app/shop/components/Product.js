@@ -9,7 +9,7 @@ import { AiOutlineHeart, AiFillHeart, AiOutlinePlus } from "react-icons/ai";
 export default function Product({ filters, sortOption }) {
     const router = useRouter();
     const { addToWishlist } = useWishlist();
-    const [wishlist, setWishlist] = useState([]); // Track wishlist items
+    const [wishlist, setWishlist] = useState([]); 
     const [popEffect, setPopEffect] = useState(null);
 
     useEffect(() => {
@@ -66,8 +66,8 @@ export default function Product({ filters, sortOption }) {
                 {sortedItems.length > 0 ? (
                     sortedItems.map((item, index) => (
                         <div
-                            className={`flex flex-col items-center justify-start w-full bg-white cursor-pointer shadow-lg rounded-lg transition-transform ${
-                                index === sortedItems.length - 1 ? "justify-self-center" : ""
+                            className={`flex flex-col items-center justify-start w-full bg-white cursor-pointer shadow-lg rounded-lg animate-pop ${
+                                index === sortedItems.length - 1? "justify-self-center" : ""
                             }`}
                             key={item.id}
                             onClick={() => handleProductClick(item.id)}

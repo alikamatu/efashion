@@ -7,10 +7,21 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+        animation: {
+            fadeIn: "fadeIn 0.5s ease-in-out forwards",
+            pop: "pop 0.3s ease-in-out",
+        },
+        keyframes: {
+            fadeIn: {
+                from: { opacity: 0, transform: "translateY(10px)" },
+                to: { opacity: 1, transform: "translateY(0)" },
+            },
+            pop: {
+                "0%": { transform: "scale(1)" },
+                "50%": { transform: "scale(1.2)" },
+                "100%": { transform: "scale(1)" },
+            },
+        },
     },
   },
   plugins: [],
