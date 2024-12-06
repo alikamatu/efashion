@@ -110,7 +110,7 @@ const Items = [
     {
         id: 10,
         name: "Black Luxury Hoddie",
-        images: ["/assets/hoddie.png", "/assets/hoddie.png", "/assets/hoddie.png"],
+        images: ["/assets/hoddie.png", "/assets/whith.png", "/assets/hoddie.png"],
         price: 79,
         category: "Clothing",
         color: "black",
